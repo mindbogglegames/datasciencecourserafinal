@@ -26,19 +26,19 @@ x_combined <- rbind(x_train, x_test)
 y_combined <- rbind(y_train, y_test)
 subject_combined <- rbind(subject_train, subject_test)
 
-#4 
+#2 
 #Appropriately labels the data set with descriptive variable names.
 colnames(x_combined) <- features_info[,1]
 colnames(subject_combined) <- c('subject_id')
 colnames(activity_labels) <- c('activity_id', 'activity_name')
 colnames(y_combined) <- c('activity_id')
 
-#2
+#3
 #Extracts only the measurements on the mean and standard deviation for each measurement.
 mean_and_std <- x_combined[grep('mean|std', names(x_combined))]
 
 
-#3 
+#4 
 #Uses descriptive activity names to name the activities in the data set
 activityMerge <- merge(activity_labels, y_combined, by.x="activity_id", by.y="activity_id")
 
