@@ -1,5 +1,13 @@
 library(dplyr)
 
+if(!dir.exists("./UCI HAR Dataset")) {
+    fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+    download.file(fileUrl, "dataset.zip", method="curl")
+    unzip("dataset.zip")
+    setwd('./UCI HAR Dataset')
+}
+
+
 #Load all data needed
 # x_train <- read.table('train/X_train.txt')
 # y_train <- read.table('train/y_train.txt')
@@ -33,7 +41,8 @@ library(dplyr)
 
 #5
 # creates a second, independent tidy data set with the average of each variable for each activity and each subject.
-all_combined <- cbind(mean_and_std, final_activityPeformed_vector, subject_combined)
-groupedData <- dplyr::group_by(all_combined, activity_name, subject_id)
-final_tidy_data <- summarize_each(groupedData, funs(mean))
+#all_combined <- cbind(mean_and_std, final_activityPeformed_vector, subject_combined)
+#groupedData <- dplyr::group_by(all_combined, activity_name, subject_id)
+#final_tidy_data <- summarize_each(groupedData, funs(mean))
 
+#write.table(final_tidy_data, "tidy.txt", row.names = FALSE, quote = FALSE)
